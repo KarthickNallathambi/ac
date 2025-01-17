@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browns Engineering - Premium AC Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #0d47a1;
+            --accent-color: #29b6f6;
+            --success-color: #4caf50;
+            
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/api/placeholder/1920/1080') center/cover;
+            opacity: 0.1;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .floating-badges {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .badge-item {
+            position: absolute;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.1;
+            font-size: 2rem;
+            color: white;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover .feature-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .ac-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 20px 0;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .ac-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .ac-card img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .ac-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .features-list {
+            font-size: 0.9rem;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .features-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .features-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .features-list i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        .enquiry-btn {
+            background: var(--secondary-color);
+            border: none;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .enquiry-btn:hover {
+            background: var(--primary-color);
+            transform: scale(1.02);
+        }
+
+        .stats-section {
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 4rem 0;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .service-process {
+            position: relative;
+            padding: 3rem 0;
+        }
+
+        .process-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-color);
+            z-index: 0;
+        }
+
+        .process-step {
+            position: relative;
+            z-index: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .special-offer {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-offer::before {
+            content: 'SPECIAL';
+            position: absolute;
+            top: 10px;
+            right: -20px;
+            background: var(--accent-color);
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.2);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--success-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Added Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="floating-badges">
+            <i class="fas fa-snowflake badge-item" style="top: 20%; left: 20%"></i>
+            <i class="fas fa-sun badge-item" style="top: 30%; right: 25%"></i>
+            <i class="fas fa-wind badge-item" style="bottom: 25%; left: 30%"></i>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center hero-text">
+                    <h1 class="display-4 fw-bold mb-4" data-aos="fade-down">Browns Engineering</h1>
+                    <p class="lead mb-4" data-aos="fade-up">Transforming Spaces with Advanced Cooling Solutions</p>
+                    <!-- <div class="d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-certificate feature-icon pulse"></i>
+                        <i class="fas fa-tools feature-icon pulse"></i>
+                        <i class="fas fa-shield-alt feature-icon pulse"></i>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-3" data-aos="fade-up">
+                <div class="feature-box text-center">
+                    <i class="fas fa-star feature-icon"></i>
+                    <h3>Premium Quality</h3>
+                    <p>Industry-leading AC brands with superior performance</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-box text-center">
+                    <i class="fas fa-wrench feature-icon"></i>
+                    <h3>Expert Service</h3>
+                    <p>Professional installation & maintenance</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-box text-center">
+                    <i class="fas fa-headset feature-icon"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer assistance</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-box text-center">
+                    <i class="fas fa-leaf feature-icon"></i>
+                    <h3>Eco-Friendly</h3>
+                    <p>Energy-efficient and environmentally conscious solutions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Offer -->
+        <div class="special-offer" data-aos="zoom-in">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h3>Summer Special Offer!</h3>
+                    <p class="mb-0">Get up to 15% off on selected AC models + Free installation</p>
+                    <small>*Terms and conditions apply. Valid until stocks last.</small>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-light enquiry-btn">
+                        <i class="fab fa-whatsapp whatsapp-icon"></i> Enquire Now
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- AC Models Section -->
+        <h2 class="text-center mb-4" data-aos="fade-up">Our Premium AC Models</h2>
+        <div class="row">
+            <!-- Inverter AC -->
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="ac-card">
+                    <div class="service-badge">Best Seller</div>
+                    <img src="/api/placeholder/400/320" class="card-img-top" alt="AC Model 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Inverter Series Pro</h5>
+                        <ul class="features-list mb-4">
+                            <li><i class="fas fa-check-circle"></i> 5 Star Energy Rating</li>
+                            <li><i class="fas fa-check-circle"></i> Smart WiFi Control</li>
+                            <li><i class="fas fa-check-circle"></i> Dual Inverter Technology</li>
+                            <li><i class="fas fa-check-circle"></i> Anti-bacterial Filter</li>
+                        </ul>
+                        <button class="btn btn-primary w-100 enquiry-btn send-enquiry"
+                                data-model="Inverter Series Pro"
+                                data-details="5 Star Inverter AC with Smart Features">
+                            <i class="fab fa-whatsapp whatsapp-icon"></i> Enquire on WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Split AC -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="ac-card">
+                    <img src="/api/placeholder/400/320" class="card-img-top" alt="AC Model 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Ultimate Cooling Plus</h5>
+                        <ul class="features-list mb-4">
+                            <li><i class="fas fa-check-circle"></i> 4-Way Air Flow</li>
+                            <li><i class="fas fa-check-circle"></i> Quick Cooling</li>
+                            <li><i class="fas fa-check-circle"></i> Low Noise Operation</li>
+                            <li><i class="fas fa-check-circle"></i> Auto Climate Control</li>
+                        </ul>
+                        <button class="btn btn-primary w-100 enquiry-btn send-enquiry"
+                                data-model="Ultimate Cooling Plus"
+                                data-details="High energy efficiency and quiet operation">
+                            <i class="fab fa-whatsapp whatsapp-icon"></i> Enquire on WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Window AC -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="ac-card">
+                    <img src="/api/placeholder/400/320" class="card-img-top" alt="AC Model 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Compact Cool Master</h5>
+                        <ul class="features-list mb-4">
+                            <li><i class="fas fa-check-circle"></i> Space-Saving Design</li>
+                            <li><i class="fas fa-check-circle"></i> High Energy Efficiency</li>
+                            <li><i class="fas fa-check-circle"></i> Anti-Dust Filter</li>
+                            <li><i class="fas fa-check-circle"></i> Auto Restart</li>
+                        </ul>
+                        <button class="btn btn-primary w-100 enquiry-btn send-enquiry"
+                                data-model="Compact Cool Master"
+                                data-details="Compact design with powerful cooling">
+                            <i class="fab fa-whatsapp whatsapp-icon"></i> Enquire on WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AC Models Section -->
+        <h2 class="text-center mb-4" data-aos="fade-up">Our Premium AC Models</h2>
+        <div class="row">
+            <!-- AC Cards here (same as before but with data-aos attributes) -->
+            <!-- Example for first card -->
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="ac-card">
+                    <div class="service-badge">Best Seller</div>
+                    <img src="/api/placeholder/400/320" class="card-img-top" alt="Inverter AC">
+                    <!-- Rest of the card content -->
+                </div>
+            </div>
+            <!-- Add similar data-aos attributes to other cards -->
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section" data-aos="fade-up">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="stat-item">
+                            <div class="stat-number">5000+</div>
+                            <div>Happy Customers</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div>Years Experience</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div>Customer Support</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div>Satisfaction Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Process -->
+        <div class="service-process">
+            <h2 class="text-center mb-5" data-aos="fade-up">Our Service Process</h2>
+            <div class="process-line"></div>
+            <div class="row">
+                <div class="col-md-3" data-aos="fade-right">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Enquiry</h4>
+                        <p>Contact us with your requirements</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-right" data-aos-delay="100">
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>Inspection</h4>
+                        <p>Free site visit and consultation</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-right" data-aos-delay="200">
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Installation</h4>
+                        <p>Professional AC installation</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-right" data-aos-delay="300">
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4>Support</h4>
+                        <p>Ongoing maintenance and service</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <section class="my-5">
+            <h2 class="text-center mb-4" data-aos="fade-up">Customer Testimonials</h2>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <img src="/api/placeholder/80/80" class="testimonial-img" alt="Customer 1">
+                        <h5>Rajesh Kumar</h5>
+                        <p class="text-muted">Business Owner</p>
+                        <p>"Excellent service! The team was professional and the installation was perfect. My office has
+                            never been cooler!"</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <img src="/api/placeholder/80/80" class="testimonial-img" alt="Customer 2">
+                        <h5>Priya Sharma</h5>
+                        <p class="text-muted">Homeowner</p>
+                        <p>"The energy savings are incredible! Browns Engineering helped me choose the perfect AC for my
+                            home. Highly recommended!"</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <img src="/api/placeholder/80/80" class="testimonial-img" alt="Customer 3">
+                        <h5>Arun Patel</h5>
+                        <p class="text-muted">Restaurant Owner</p>
+                        <p>"Their 24/7 support is outstanding! Any issues are resolved quickly. Best AC service in the
+                            city!"</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="my-5">
+            <h2 class="text-center mb-4" data-aos="fade-up">Why Choose Browns Engineering?</h2>
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5><i class="fas fa-check-circle text-success me-2"></i> Certified Technicians</h5>
+                            <p>Our team consists of factory-trained and certified professionals with years of
+                                experience.</p>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5><i class="fas fa-shield-alt text-success me-2"></i> Warranty Support</h5>
+                            <p>Extended warranty options and comprehensive after-sales support for peace of mind.</p>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5><i class="fas fa-tools text-success me-2"></i> Preventive Maintenance</h5>
+                            <p>Regular maintenance plans to ensure optimal performance and longevity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5><i class="fas fa-clock text-success me-2"></i> Quick Response Time</h5>
+                            <p>Emergency service with guaranteed response time within 2 hours.</p>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5><i class="fas fa-percent text-success me-2"></i> Competitive Pricing</h5>
+                            <p>Best-in-class products and services at competitive market rates.</p>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5><i class="fas fa-hand-holding-usd text-success me-2"></i> Flexible Payment Options</h5>
+                            <p>Multiple payment options including EMI facilities available.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="my-5">
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right">
+                    <h2 class="mb-4">Get in Touch</h2>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <h2 class="mb-4">Service Areas</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">We Serve All Major Areas in Chennai</h5>
+                            <div class="row">
+                                <div class="col-6">
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-map-marker-alt text-primary me-2"></i> Anna Nagar</li>
+                                        <li><i class="fas fa-map-marker-alt text-primary me-2"></i> T Nagar</li>
+                                        <li><i class="fas fa-map-marker-alt text-primary me-2"></i> Velachery</li>
+                                        <li><i class="fas fa-map-marker-alt text-primary me-2"></i> OMR</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-map-marker-alt text-primary me-2"></i> Adyar</li>
+                                        <li><i class="fas fa-map-marker-alt text-primary me-2"></i> Tambaram</li>
+                                        <li><i class="fas fa-map-marker-alt text-primary me-2"></i> ECR</li>
+                                        <li><i class="fas fa-map-marker-alt text-primary me-2"></i> Porur</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Browns Engineering</h5>
+                    <p>Your trusted partner for all AC solutions</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">About Us</a></li>
+                        <li><a href="#" class="text-light">Services</a></li>
+                        <li><a href="#" class="text-light">Products</a></li>
+                        <li><a href="#" class="text-light">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> +91 96261 87019</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@brownsengineering.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Chennai, Tamil Nadu</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <small>&copy; 2025 Browns Engineering. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // WhatsApp Enquiry Function
+        document.querySelectorAll('.send-enquiry').forEach(button => {
+            button.addEventListener('click', function () {
+                const modelName = this.getAttribute('data-model');
+                const details = this.getAttribute('data-details');
+                sendEnquiry(modelName, details);
+            });
+        });
+
+        function sendEnquiry(modelName, details) {
+            const phoneNumber = "9626187019";
+            const message = `Hello Browns Engineering,\n\nI'm interested in knowing more about:\n\nModel: ${modelName}\nSpecifications: ${details}\n\nPlease provide more details about pricing and installation.`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Contact Form Handler
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your message. We will get back to you soon!');
+            this.reset();
+        });
+
+        // Scroll to Top Button
+        window.onscroll = function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.querySelector('.scroll-top').style.display = "block";
+            } else {
+                document.querySelector('.scroll-top').style.display = "none";
+            }
+        };
+
+
+
+
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // WhatsApp Enquiry Function - Updated with your specific code
+        document.querySelectorAll('.send-enquiry').forEach(button => {
+            button.addEventListener('click', function() {
+                const modelName = this.getAttribute('data-model');
+                const details = this.getAttribute('data-details');
+                sendEnquiry(modelName, details);
+            });
+        });
+
+        function sendEnquiry(modelName, details) {
+            const phoneNumber = "7708807156";
+            const message = `Hello, I would like to enquire about the following AC:\n\nModel: ${modelName}\nDetails: ${details}`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        
+    </script>
+</body>
+
+</html>
